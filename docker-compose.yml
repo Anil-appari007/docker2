@@ -1,0 +1,15 @@
+version: '3.9'
+secrets:
+  mysecret1:
+    external: true
+
+
+services:
+  test_mydb:
+    image: mysql
+    deploy:
+      replicas: 1
+    secrets:
+    - mysecret1
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysecret1
